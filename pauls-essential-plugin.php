@@ -51,3 +51,12 @@ function emailobfusction_func( $atts )
 }
 add_shortcode( 'obf', 'emailobfusction_func' );
 
+// Set the default image link to none..
+function paul_image_link_setup() {
+	$image_link = get_option( 'image_default_link_type' );
+	
+	if ($image_link !== 'none') {
+		update_option('image_default_link_type', 'none');
+	}
+}
+add_action('admin_init', 'paul_image_link_setup', 10);
