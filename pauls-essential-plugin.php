@@ -30,9 +30,9 @@ function paul_remove_dashboard_widgets() {
 
 add_action('wp_dashboard_setup', 'paul_remove_dashboard_widgets' );
 
-/* Email Obfuscation */
-/* Usage: [obf email="email@example.com" noscript="what's shown to bots/people without javascript"] */
-function emailobfusction_func( $atts )
+// Email Obfuscation
+// Usage: [obf email="email@example.com" noscript="what's shown to bots/people without javascript"]
+function paul_email_obfuscate( $atts )
 {
 	extract( shortcode_atts( array(
 		'email'     => get_settings('admin_email'), // Defaulting to admin email
@@ -49,7 +49,7 @@ function emailobfusction_func( $atts )
             . '"' . $javascript . ');</script>'
             . '<noscript>' . $noscript . '</noscript>';
 }
-add_shortcode( 'obf', 'emailobfusction_func' );
+add_shortcode( 'obf', 'paul_email_obfusctate' );
 
 // Set the default image link to none..
 function paul_image_link_setup() {
