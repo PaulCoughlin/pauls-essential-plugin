@@ -3,7 +3,7 @@
 Plugin Name: Paul's Essential Plugin
 Plugin URI: http://paulcoughlin.com/
 Description: This is a plugin which sets defaults, such as revisions, dashboard cleanup etc.
-Version: 1.0
+Version: 1.1
 Author: Paul Coughlin
 Author URI: http://www.paulcoughlin.com
 */
