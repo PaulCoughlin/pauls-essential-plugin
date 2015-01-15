@@ -60,3 +60,12 @@ function paul_image_link_setup() {
 	}
 }
 add_action('admin_init', 'paul_image_link_setup', 10);
+
+// Prevent WordPress From Participating In Pingback Denial of Service Attacks
+// Hacked from http://wordpress.org/plugins/remove-xmlrpc-pingback-ping
+
+function paul_remove_xmlrpc_pingback_ping( $methods ) {
+   unset( $methods['pingback.ping'] );
+   return $methods;
+}
+add_filter( 'xmlrpc_methods', 'paul_remove_xmlrpc_pingback_ping' );
