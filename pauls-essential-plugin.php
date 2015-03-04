@@ -8,6 +8,9 @@ Author: Paul Coughlin
 Author URI: http://www.paulcoughlin.com
 */
 
+// Set my AKISMET key
+define('WPCOM_API_KEY','my-key');
+
 // Set the revision to maximum 2
 define('WP_POST_REVISIONS', 2);
 
