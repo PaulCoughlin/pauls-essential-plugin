@@ -3,7 +3,7 @@
 Plugin Name: Paul's Essential Plugin
 Plugin URI: https://github.com/paulcoughlin/pauls-essential-plugin/
 Description: This is a plugin which sets defaults, such as revisions, dashboard cleanup etc.
-Version: 1.1
+Version: 1.2
 Author: Paul Coughlin
 Author URI: http://www.paulcoughlin.com
 */
@@ -72,3 +72,10 @@ function paul_remove_xmlrpc_pingback_ping( $methods ) {
    return $methods;
 }
 add_filter( 'xmlrpc_methods', 'paul_remove_xmlrpc_pingback_ping' );
+
+// Clean up the head..
+remove_action('wp_head', 'rsd_link');
+remove_action('wp_head', 'wlwmanifest_link');
+remove_action('wp_head', 'index_rel_link');
+remove_action('wp_head', 'wp_generator');
+
