@@ -3,7 +3,7 @@
 Plugin Name: Paul's Essential Plugin
 Plugin URI: https://github.com/paulcoughlin/pauls-essential-plugin/
 Description: This is a plugin which sets defaults, such as revisions, dashboard cleanup etc.
-Version: 1.2
+Version: 1.3
 Author: Paul Coughlin
 Author URI: http://www.paulcoughlin.com
 */
@@ -83,3 +83,22 @@ remove_action('wp_head', 'wp_generator');
 remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
 remove_action( 'wp_print_styles', 'print_emoji_styles' ); 
 
+/**
+ * Disable Loading of Google Fonts in WordPress Backend.
+ *
+ * @source: http://netzklad.de/2014/04/google-fonts-im-wordpress-backend-ohne-plugin-deaktivieren/
+ */
+
+function paul_disable_google_fonts_wp_backend( $styles ) {
+    
+    // Open Sans always gets loaded in backend, independent on which theme has been activated
+    $styles->add( 'open-sans', '' );
+    
+    // These fonts are added by the default themes and are therefore optional
+    $styles->add( 'twentyfifteen-fonts', '' );
+    $styles->add( 'twentyfourteen-lato', '' );
+    $styles->add( 'twentythirteen-fonts', '' );
+    $styles->add( 'twentytwelve-fonts', '' );
+}
+
+add_action( 'wp_default_styles', 'paul_disable_google_fonts_wp_backend', 5 );
