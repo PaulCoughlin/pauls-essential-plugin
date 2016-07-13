@@ -9,7 +9,7 @@ Author URI: http://www.paulcoughlin.com
 */
 
 // Set my AKISMET key
-define('WPCOM_API_KEY','c6c1df3281e1');
+define('WPCOM_API_KEY','your-key');
 
 // Set the revision to maximum 2
 define('WP_POST_REVISIONS', 2);
