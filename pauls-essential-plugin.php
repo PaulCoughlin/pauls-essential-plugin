@@ -3,13 +3,13 @@
 Plugin Name: Paul's Essential Plugin
 Plugin URI: https://github.com/paulcoughlin/pauls-essential-plugin/
 Description: This is a plugin which sets defaults, such as revisions, dashboard cleanup etc.
-Version: 1.3
+Version: 1.4
 Author: Paul Coughlin
 Author URI: http://www.paulcoughlin.com
 */
 
 // Set my AKISMET key
-define('WPCOM_API_KEY','my-key');
+define('WPCOM_API_KEY','c6c1df3281e1');
 
 // Set the revision to maximum 2
 define('WP_POST_REVISIONS', 2);
@@ -102,3 +102,18 @@ function paul_disable_google_fonts_wp_backend( $styles ) {
 }
 
 add_action( 'wp_default_styles', 'paul_disable_google_fonts_wp_backend', 5 );
+
+/**
+ * This is used to rename the author slug, to contain the nicename instead of the username for security
+ * Note: Thsi will not work for duplicate nicknames, or nicknames with spaces..
+ *
+*/
+
+function paul_set_user_nicename_to_nickname( &$errors, $update, &$user )
+{
+    if ( ! empty( $user->nickname ) ) {
+        $user->user_nicename = sanitize_title( $user->nickname, $user->display_name );
+    }
+}
+
+add_action( 'user_profile_update_errors', 'paul_set_user_nicename_to_nickname', 10, 3 );
